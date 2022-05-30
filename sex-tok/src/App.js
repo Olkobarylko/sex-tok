@@ -4,21 +4,20 @@ import Footer from './components/layouts/footer/footer';
 import Sidebar from './components/layouts/sidebar/sidebar';
 import Feed from './components/pages/feed/feed';
 import Profile from './components/pages/profile/profile';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 
-const App = () => {
+const App = (props) => {
+  console.log(props);
   return (
-    <BrowserRouter>
         <div>
             <Header />
             <Sidebar />
         <Routes>
-          <Route path="/profile" element = {<Profile />}/>
+          <Route path="/profile" element = {<Profile profile={props.state.profile} addPost={props.addPost}/>}/>
 				  <Route path="/feed" element = {<Feed />}/>
         </Routes>
         <Footer />
     </div>
-    </BrowserRouter>
   )
 }
 
