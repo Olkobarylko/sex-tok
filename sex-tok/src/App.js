@@ -13,7 +13,7 @@ const App = (props) => {
             <Header />
             <Sidebar />
         <Routes>
-          <Route path="/profile" element = {<Profile profile={props.state.profile} addPost={props.addPost}/>}/>
+          <Route path="/profile" element = {<Profile profile={props.state.profile} addPost={props.addPost} changeProfileInput = {props.changeProfileInput}/>}/>
 				  <Route path="/feed" element = {<Feed />}/>
         </Routes>
         <Footer />

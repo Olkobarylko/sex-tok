@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import state, {addPost} from './redux/state';
+import store from './redux/store';
 import {BrowserRouter} from 'react-router-dom';
 
-ReactDOM.createRoot(document.getElementById('root')).render( 
-<BrowserRouter>
-<App state={state} addPost={addPost}/>
-</BrowserRouter>);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+let renderApp = () => {
+    root.render( 
+        <BrowserRouter>
+        <App state={store.getState()} addPost={store.addPost.bind(store)} changeProfileInput = {store.changeProfileInput.bind(store)}/>
+        </BrowserRouter>);
+}
+
+renderApp();
+
+store.subscribe(renderApp);
 
 reportWebVitals();
